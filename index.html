@@ -6,6 +6,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>circle Circumference Finder</title>
     <link rel="stylesheet" href="circleCircumferenceFinder.css">
+    <style>
+        body {
+    background-color: #f2f0f0;
+    margin: 0%;
+    background-image: url(imgs/img1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-attachment: scroll;
+        background-position: top;
+    }
+
+    .box {
+        width: 95%;
+    }
+}
+
+#heading {
+    background-color: #522988;
+    padding: 30px 0px;
+    text-align: center;
+    color: azure;
+}
+
+.box {
+    margin: auto;
+    margin-top: 50px;
+    width: 50%;
+    border: 2px solid #522988;
+    padding: 30px 50px;
+    border-radius: 10px;
+
+    /* Glassy effect */
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.box h1 {
+    font-size: 20px;
+}
+
+/* Mobile Responsive */
+@media only screen and (max-width: 600px) {
+    body {
+        background-attachment: scroll;
+        background-position: top;
+    }
+
+    .box {
+        width: 95%;
+        /* Full width */
+        padding: 20px;
+        /* Reduced padding */
+        box-sizing: border-box;
+        /* Include padding and borders in width */
+    }
+
+    input {
+        width: 100%;
+        /* Full width for input fields */
+    }
+
+    button {
+        width: 100%;
+        /* Full width for buttons */
+        padding: 10px;
+        margin-top: 10px;
+        /* Add spacing between buttons */
+    }
+}
+
+input {
+    padding: 8px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f1e8ff;
+    outline: none;
+}
+
+input:focus {
+    border-color: #a3a3a3;
+    box-shadow: 0 0 5px #bebebe;
+}
+
+input:hover {
+    box-shadow: 0 0 5px #bebebe;
+}
+
+button {
+    padding: 5px 15px;
+    border: 1px solid #522988;
+    border-radius: 5px;
+    background-color: #522988;
+    color: azure;
+    font-size: 15px;
+    box-shadow: 0 0 5px #bebebe;
+}
+
+button:hover {
+    background-color: #3f1d6c;
+    box-shadow: 0 0 5px #7c7c7c;
+    cursor: pointer;
+}
+
+.box #result {
+    font-weight: 500;
+    font-style: oblique;
+}
+
+.highlight {
+    background-color: rgb(255, 255, 98);
+    padding: 2px 5px;
+}
+    </style>
 </head>
 
 <body>
@@ -20,7 +143,35 @@
     </div>
 
 
-    <script src="var-constant.js"></script>
+    <script>
+        const PI = 3.14;
+let radius;
+let circumference;
+
+document.getElementById("Submit").onclick = function () {
+    radius = document.getElementById("radiusVal").value;
+    radius = Number(radius);
+    if (!isNaN(radius) && radius > 0) {
+        circumference = 2 * PI * radius;
+        // document.getElementById("result").textContent = "Yeh raha ji tumhara result -->" + circumference.toFixed(4) + "cm";
+        let formattedCircumference = parseFloat(circumference.toFixed(4));
+
+        document.getElementById("result").innerHTML = `Yeh raha tumhara result --> <span class="highlight">${formattedCircumference} cm</span>`; //<span>will show as it is if we take textContent
+
+
+        document.getElementById("textToHide").style.display = "none";
+
+
+    }
+    else {
+        alert("Please enter a valid radius value greater than 0.");
+    }
+}
+
+document.getElementById("refreshPage").onclick = function () {
+    location.reload();
+}
+    </script>
 </body>
 
 </html>
