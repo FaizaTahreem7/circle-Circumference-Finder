@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>circle Circumference Finder</title>
-    <link rel="stylesheet" href="circleCircumferenceFinder.css">
     <style>
         body {
     background-color: #f2f0f0;
@@ -136,7 +135,7 @@ button:hover {
     <div class="box">
         <h1>Enter Value of radius</h1>
         <input type="text" id="radiusVal" placeholder="radius"><br><br>
-        <p id="textToHide">Looka chuppi bohot Huwi, saamne aaja Result</p>
+        <p id="textToHide">Enter a valid value</p>
         <button type="submit" id="Submit">Submit</button>
         <button type="reset" id="refreshPage">Reset</button>
         <h4 id="result"></h4>
@@ -153,10 +152,9 @@ document.getElementById("Submit").onclick = function () {
     radius = Number(radius);
     if (!isNaN(radius) && radius > 0) {
         circumference = 2 * PI * radius;
-        // document.getElementById("result").textContent = "Yeh raha ji tumhara result -->" + circumference.toFixed(4) + "cm";
         let formattedCircumference = parseFloat(circumference.toFixed(4));
 
-        document.getElementById("result").innerHTML = `Yeh raha tumhara result --> <span class="highlight">${formattedCircumference} cm</span>`; //<span>will show as it is if we take textContent
+        document.getElementById("result").innerHTML = `<span class="highlight">${formattedCircumference} cm</span>`; 
 
 
         document.getElementById("textToHide").style.display = "none";
